@@ -1,0 +1,121 @@
+/* catatan-app start */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.font {
+  margin: 20px 0px;
+  text-align: center;
+}
+/* catatan-app end */
+
+.notesWrapper {
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+}
+
+.listWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+/* Test 1 */
+/* catatan-list start */
+.listContainer {
+  padding: 20px;
+  height: 500px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.1);
+}
+
+.listContainer h2 {
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  height: 88%;
+  overflow: hidden;
+  background-color: #edf1d6;
+  overflow-y: scroll;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 12px;
+  background-color: #fff;
+  margin-top: 10px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.listItemData {
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.listItem p {
+  text-align: justify;
+}
+
+.listItemBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.listItemBtn button {
+  padding: 8px 16px;
+}
+
+.listNoItem {
+  width: 437px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listNoItem h3 {
+  text-align: center;
+}
+/* catatan-list end */
+
+/* Scrollbar start */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #9dc08b;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #609966;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #609966;
+}
+/* Scrollbar end */
+
+/* Test 2 */
+
+.test {
+  color: red;
+}

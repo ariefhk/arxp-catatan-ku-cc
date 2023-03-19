@@ -1,10 +1,10 @@
 import React from "react";
+import styles from "./style.module.css";
 
 export default class CatatanInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: "",
       title: "",
       note: "",
     };
@@ -18,10 +18,7 @@ export default class CatatanInput extends React.Component {
     let nameInput = event.target.name;
     let value = event.target.value;
 
-    if (nameInput === "date") {
-      this.setState({ ...this.state, date: value });
-      console.log("value Date: ", value);
-    } else if (nameInput === "title") {
+    if (nameInput === "title") {
       this.setState({ ...this.state, title: value });
       console.log("value Title: ", value);
     } else if (nameInput === "note") {
@@ -32,7 +29,6 @@ export default class CatatanInput extends React.Component {
 
   onClearForm() {
     this.setState({
-      date: "",
       title: "",
       note: "",
       isUpdate: false,
@@ -46,23 +42,13 @@ export default class CatatanInput extends React.Component {
   }
 
   render() {
-    const { date, title, note } = this.state;
+    const { title, note } = this.state;
 
     return (
-      <div className="catatan-form">
+      <div className={styles.formContainer}>
         <h2>Tambah Catatan</h2>
-        <form className="catatan-form__body" onSubmit={this.onHandleSubmit}>
-          <div className="catatan-form__body__box">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={date}
-              onChange={this.onChangeHandler}
-            />
-          </div>
-          <div className="catatan-form__body__box">
+        <form className={styles.formBody} onSubmit={this.onHandleSubmit}>
+          <div className={styles.formInputContainer}>
             <label htmlFor="title">Title</label>
             <input
               type="text"
@@ -72,8 +58,7 @@ export default class CatatanInput extends React.Component {
               onChange={this.onChangeHandler}
             />
           </div>
-
-          <div className="catatan-form__body__box">
+          <div className={styles.formInputContainer}>
             <label htmlFor="note">Note</label>
             <textarea
               name="note"
