@@ -1,11 +1,11 @@
 import React from "react";
-import { showFormattedDate } from "../../utils/data";
 import styles from "./style.module.css";
+import { showFormattedDate } from "../../utils/data";
 
-export default function Catatanlist({ notes, deleteNote, archivedNote }) {
+export default function CatatanArsip({ notes, deleteNote, moveNote }) {
   return (
     <div className={styles.listContainer}>
-      <h2>Daftar Catatan</h2>
+      <h2>Daftar Arsip</h2>
       <div className={styles.list}>
         {notes.length ? (
           notes.map((note) => (
@@ -17,7 +17,7 @@ export default function Catatanlist({ notes, deleteNote, archivedNote }) {
               </div>
               <div className={styles.listItemBtn}>
                 <button onClick={() => deleteNote(note.id)}>Hapus</button>
-                <button onClick={() => archivedNote(note.id)}>Arsip</button>
+                <button onClick={() => moveNote(note.id)}>Pindah</button>
               </div>
             </div>
           ))

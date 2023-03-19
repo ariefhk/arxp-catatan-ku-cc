@@ -31,6 +31,10 @@
   flex-direction: column;
 }
 
+.titleLength {
+  font-size: 1.2rem;
+}
+
 .formInputContainer input,
 .formInputContainer textarea {
   padding: 6px;

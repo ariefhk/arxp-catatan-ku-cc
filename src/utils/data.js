@@ -32,7 +32,7 @@ const getInitialData = () => [
     title: "ESM",
     body: "ESM (ECMAScript Module) merupakan format modularisasi standar JavaScript.",
     createdAt: "2022-04-14T04:27:34.572Z",
-    archived: true,
+    archived: false,
   },
   {
     id: 6,

@@ -6,10 +6,11 @@ export default class CatatanInput extends React.Component {
     super(props);
     this.state = {
       title: "",
-      note: "",
+      body: "",
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onLimitChar = this.onLimitChar.bind(this);
     this.onHandleSubmit = this.onHandleSubmit.bind(this);
     this.onClearForm = this.onClearForm.bind(this);
   }
@@ -18,55 +19,75 @@ export default class CatatanInput extends React.Component {
     let nameInput = event.target.name;
     let value = event.target.value;
 
+    if (!value || value.trim() === "") alert("Input Data Terlebih Dahulu!");
+
     if (nameInput === "title") {
       this.setState({ ...this.state, title: value });
-      console.log("value Title: ", value);
-    } else if (nameInput === "note") {
-      this.setState({ ...this.state, note: value });
-      console.log("value Note: ", value);
+    } else if (nameInput === "body") {
+      this.setState({ ...this.state, body: value });
     }
+  }
+
+  onLimitChar(text) {
+    let maxLength = 50 - text.length;
+
+    if (maxLength <= 0) {
+      alert("Karakter Anda Melebihi batas!");
+      this.setState({ title: "" });
+    }
+    return maxLength;
   }
 
   onClearForm() {
     this.setState({
       title: "",
-      note: "",
-      isUpdate: false,
+      body: "",
     });
   }
 
   onHandleSubmit(event) {
     event.preventDefault();
+    let value = event.target.value;
+
+    if (!value || value.trim() === "") {
+      alert("Input Semua Data Terlebih Dahulu!");
+      this.onClearForm();
+      return;
+    }
     this.props.addNote(this.state);
     this.onClearForm();
   }
 
   render() {
-    const { title, note } = this.state;
+    const { title, body } = this.state;
+    const { onChangeHandler, onHandleSubmit, onLimitChar } = this;
 
     return (
       <div className={styles.formContainer}>
         <h2>Tambah Catatan</h2>
-        <form className={styles.formBody} onSubmit={this.onHandleSubmit}>
+        <form className={styles.formBody} onSubmit={onHandleSubmit}>
           <div className={styles.formInputContainer}>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Judul</label>
             <input
               type="text"
               id="title"
               name="title"
               value={title}
-              onChange={this.onChangeHandler}
+              onChange={onChangeHandler}
             />
           </div>
+          <p className={styles.titleLength}>
+            Sisa Karakter: {onLimitChar(title)}
+          </p>
           <div className={styles.formInputContainer}>
-            <label htmlFor="note">Note</label>
+            <label htmlFor="body">Catatan</label>
             <textarea
-              name="note"
-              id="note"
+              name="body"
+              id="body"
               cols="24"
-              rows="6"
-              value={note}
-              onChange={this.onChangeHandler}
+              rows="5"
+              value={body}
+              onChange={onChangeHandler}
             ></textarea>
           </div>
           <button type="submit">Submit</button>
